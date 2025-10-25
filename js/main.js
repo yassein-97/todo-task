@@ -72,14 +72,14 @@ function setUpUpdate(index){
     
 }
 
-function updateData(){
-    console.log("test");
-    allTasks.splice(globalIndex,1,myInput.value);
-    localStorage.setItem("tasks",JSON.stringify(allTasks));
-    display();
-    addBtn.classList.remove("d-none");
-    updateBtn.classList.add("d-none");
-    clearInput();   
-}
+// function updateData(){
+//     console.log("test");
+//     allTasks.splice(globalIndex,1,myInput.value);
+//     localStorage.setItem("tasks",JSON.stringify(allTasks));
+//     display();
+//     addBtn.classList.remove("d-none");
+//     updateBtn.classList.add("d-none");
+//     clearInput();   
+// }
 
 // create reed update delete
