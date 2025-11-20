@@ -12,6 +12,7 @@ var allTasks = [];
 
 if(localStorage.getItem("tasks")){
     allTasks = JSON.parse(localStorage.getItem("tasks"));
+    // localStorage
     display();
 }
 
@@ -36,12 +37,27 @@ function display(){
     for(var i=0 ; i< allTasks.length;i++){
         box += ` <tr>
                     <td>${allTasks[i]}</td>
-                    <td><button class="btn btn-danger" onClick="deleteRow(${i})" > <i class="fa-solid fa-trash-can"></i> Delete</button></td>
+                    <td><button class="btn btn-danger test" data-index="${i}" > <i class="fa-solid fa-trash-can"></i> Delete</button></td>
                     <td><button class="btn btn-warning" onClick="setUpUpdate(${i})"> <i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
                 </tr>`
     }
     myRow.innerHTML = box;
+    var deleteBtns = document.querySelectorAll(".test");
+    // console.log(deleteBtns);
+    for(var i=0; i<deleteBtns.length;i++){
+        deleteBtns[i].addEventListener("click",function(e){
+            // console.log("test");
+            console.log(e.target.getAttribute("data-index"));
+            // deleteRow(e.target.id);
+            
+        })
+    }
+    
 }
+
+
+
+
 
 
 function clearInput(){
@@ -83,3 +99,6 @@ function setUpUpdate(index){
 // }
 
 // create reed update delete
+
+
+// localStorage.removeItem("tasks")

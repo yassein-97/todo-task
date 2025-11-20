@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Task</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- ✅ SECTION -->
+<section class="before-after-slider position-relative bg-white py-5">
+  <div class="container">
+    <div class="text-center pb-4">
+      <h3 class="fs-6 fw-semibold mb-3 text-primary text-uppercase">
+        BEFORE & AFTER TRANSFORMATIONS
+      </h3>
+      <h2 class="fs-4 fs-xl-3 fw-semibold mb-0 text-dark">
+        Check Out Our Transformations In <span class="text-primary">Schofields</span>
+      </h2>
+    </div>
+
+    <!-- ✅ Slider -->
+    <div class="keen-slider" id="beforeAfterSlider">
+
+      <!-- Slide 1 -->
+      <div class="keen-slider__slide">
+        <div class="ba-slider">
+          <img src="https://cdn.legionpage.com/i/a31/assets/images/before11.png" alt="Before">
+          <div class="resize">
+            <img src="https://cdn.legionpage.com/i/a31/assets/images/after11.png" alt="After">
+          </div>
+          <span class="handle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" stroke="#007bff" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="11" fill="#fff"/>
+              <path d="M13 8l-4 4 4 4M11 8l4 4-4 4" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="label before">BEFORE</span>
+          <span class="label after">AFTER</span>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="keen-slider__slide">
+        <div class="ba-slider">
+          <img src="https://cdn.legionpage.com/i/a31/assets/images/before22.png" alt="Before">
+          <div class="resize">
+            <img src="https://cdn.legionpage.com/i/a31/assets/images/after22.png" alt="After">
+          </div>
+          <span class="handle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" stroke="#007bff" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="11" fill="#fff"/>
+              <path d="M13 8l-4 4 4 4M11 8l4 4-4 4" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="label before">BEFORE</span>
+          <span class="label after">AFTER</span>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="keen-slider__slide">
+        <div class="ba-slider">
+          <img src="https://cdn.legionpage.com/i/a31/assets/images/before33.png" alt="Before">
+          <div class="resize">
+            <img src="https://cdn.legionpage.com/i/a31/assets/images/after33.png" alt="After">
+          </div>
+          <span class="handle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" stroke="#007bff" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="11" fill="#fff"/>
+              <path d="M13 8l-4 4 4 4M11 8l4 4-4 4" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="label before">BEFORE</span>
+          <span class="label after">AFTER</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Dots -->
+    <div class="dots text-center mt-4"></div>
+  </div>
+</section>
+
+<!-- ✅ CSS -->
+<style>
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 10px;
+}
+.ba-slider img {
+  width: 100%;
+  display: block;
+}
+.ba-slider .resize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+.ba-slider .handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: ew-resize;
+  z-index: 3;
+}
+.ba-slider .label {
+  position: absolute;
+  bottom: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #f0f4f6;
+  color: #007bff;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+.label.before { left: 15px; }
+.label.after { right: 15px; }
+
+.keen-slider {
+  overflow: hidden;
+}
+.keen-slider__slide {
+  display: flex;
+  justify-content: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5dc;
+  border: none;
+}
+.dots button.active {
+  background: #007bff;
+}
+</style>
+
+<!-- ✅ JS -->
+<script src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js"></script>
+<script>
+  // Keen Slider init
+  const slider = new KeenSlider("#beforeAfterSlider", {
+    loop: true,
+    slides: { perView: 1, spacing: 15 },
+    created(s) {
+      const dots = document.querySelector(".dots");
+      s.track.details.slides.forEach((_slide, idx) => {
+        const dot = document.createElement("button");
+        dot.addEventListener("click", () => s.moveToIdx(idx));
+        dots.appendChild(dot);
+      });
+      updateDots();
+      s.on("slideChanged", updateDots);
+      function updateDots() {
+        Array.from(dots.children).forEach((dot, idx) => {
+          dot.classList.toggle("active", s.track.details.rel === idx);
+        });
+      }
+    },
+  });
+
+  // Before/After functionality
+  document.querySelectorAll(".ba-slider").forEach(slider => {
+    let handle = slider.querySelector(".handle");
+    let resize = slider.querySelector(".resize");
+
+    function moveDivisor(x) {
+      let rect = slider.getBoundingClientRect();
+      let pos = Math.max(0, Math.min(x - rect.left, rect.width));
+      resize.style.width = pos + "px";
+      handle.style.left = pos + "px";
+    }
+
+    slider.addEventListener("mousemove", e => moveDivisor(e.clientX));
+    slider.addEventListener("touchmove", e => moveDivisor(e.touches[0].clientX));
+  });
+</script>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
